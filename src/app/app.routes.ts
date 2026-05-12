@@ -1,10 +1,21 @@
 import { Routes } from '@angular/router';
 import { Login } from './login/login';
 import { Register } from './register/register';
+import { MainLayout } from './layout/main-layout/main-layout';
+import { Products } from './products/products';
+import { authGuard } from './auth-guard';
 
 //Uygulamanin yonlendirmeleri burada tutulur (component yonlendirmeleri)
 
 export const routes: Routes = [
   {path: '', component: Login},
-  {path: 'register', component: Register}
+  {path: 'register', component: Register},
+  {
+    path:'',
+    component: MainLayout,
+    canActivate: [authGuard],
+    children: [
+      {path: 'products', component: Products}
+    ]
+  }
 ];
