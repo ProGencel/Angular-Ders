@@ -10,12 +10,6 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   const cid = localStorage.getItem('cid');
 
-  if(!cid)
-  {
-    router.navigate(['/']);
-    return false;
-  }
-
   return http.get('http://localhost:8090/product/control',{
     withCredentials:true
   }).pipe(
