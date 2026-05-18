@@ -6,6 +6,8 @@ import { Products } from './products/products';
 import { authGuard } from './auth-guard';
 import { notAuthGuard } from './not-auth-guard';
 import { Notes } from './notes/notes';
+import { ProducSearch } from './product-search/product-search';
+import { ProductDetail } from './product-detail/product-detail';
 
 //Uygulamanin yonlendirmeleri burada tutulur (component yonlendirmeleri)
 
@@ -18,7 +20,9 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       {path: 'products', component: Products},
-      {path: 'notes', component: Notes}
+      {path: 'notes', component: Notes},
+      {path: 'products/:id', component: ProductDetail},
+      {path: 'product-search', component: ProducSearch},
     ]
   }
 ];
